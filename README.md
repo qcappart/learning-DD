@@ -1,5 +1,7 @@
+
 # learning-DD
 
+This repository is currently construction. It will be released in the next days.
 ## Overview
 
 ## Installation Instructions
