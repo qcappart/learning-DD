@@ -1,7 +1,7 @@
 
 # Project
 
-**/*.model
+**/results-local
 **/build
 
 # Byte-compiled / optimized / DLL files
