@@ -5,6 +5,31 @@ This repository is currently construction. It will be released in the next days.
 
 ## Overview of the repository
 
+```bash
+.
+├── graphnn/ # graphnn library
+└── models/ # Implementation of the problems
+	├── maxcut-random/
+	├── ...
+        └── misp-random/
+              ├── results-local/ # Folder where the trained models and results are saved
+              ├── misp_evaluate_random.py # Testing script
+              ├── misp_training_random.py # Training script
+              ├── run_misp_eval_random.sh # Executable file for running the evaluation.
+              ├── run_misp_training_random.sh # Executable file for running the training.
+              └── code/
+                  ├── Makefile
+                  ├── learning_lib.py # Interface between python and C++ implementation
+                  ├── include/ # Header files
+                  └── src/
+                      ├── learning_lib.cpp # Initialization of the RL model and algorithms
+                      ├── dd/ # Construction of the decision diagram.
+                      └── learning/
+                          ├── learning_env.cpp # Reinforcement learning environment
+                          ├── misp_qnet.cpp # Implementation of the neural network
+                          └── ...
+```
+
 ## Installation Instructions
 
 The next instructions describe how to build the library for the Maximum Indepenset Problem. The procedure is the same for the other problems.
@@ -42,25 +67,27 @@ make
 
 ### 4. Setting up a virtual environment
 
-1. Create a python virtual environment
+1. We use conda for managing the virtual environments. If it is not yet done, install the latest version of conda (https://conda.io/docs/index.html).
+
+2. Create a python virtual environment
 
 ```shell
 conda create -n learning-DD-env python=3.6
 ```
 
-2. Install the required packages
+3. Install the required packages
 
 ```shell
 conda install --name learning-DD-env numpy networkx matplotlib
 ```
 
-3. Activate the virtual environment
+4. Activate the virtual environment
 
 ```shell
 conda activate learning-DD-env
 ```
 
-4. Once done, you can deactivate the virtual environment
+5. Once done, you can deactivate the virtual environment
 
 ```shell
 conda deactivate 
@@ -89,9 +116,11 @@ chmod +x run_misp_eval_random.sh
 ./run_misp_eval_random.sh 
 ```
 
-2. It creates a new file recaping the performances obtained for each test graph.
+2. It creates a new file recaping the performances and the ordering obtained for each tested instance.
 
 ### 3. Modifying the parameters
+
+You can also modify the previous scripts in order to train/test models with other parameters. You just have to change the values in the previous script. Be sure that the parameters in the test files are consistent with the one in the training file in order to evaluate the right model.
 
 ### 4. Comparing with other methods
 
@@ -101,21 +130,29 @@ Python scripts that we used in order to perform the comparison in the paper are 
 
 This list recaps the problems that are currently handled by our method.
 
-- [x] Maximum Independent Set Problem (MISP)
-- [x] Maximum Cut Problem (Maxcut)
-- [ ] Knapsack - In progress
 
-Basically, adding a new problem requires only to implement the linked DD construction and build the RL environment.
+
+
+![Alt text](http://progressed.io/bar/100) Maximum Independent Set Problem (MISP)
+
+![Alt text](http://progressed.io/bar/75) Maximum Cut Problem (Maxcut) - Must improve the performance
+
+![Alt text](http://progressed.io/bar/50) Knapsack - In progress
+
+Basically, adding a new problem requires only to implement the related DD construction and build the RL environment.
 
 ## Future work
 
 To the best of our knowledge, it is the first work using machine learning for the purpose of tightening optimization bounds. 
-It opens new insights of research and many possibilities of future work. If you would like to contribute, here are some propositions :
+It opens new insights of research and many possibilities of future works :
 
-- [ ] idea 1
-- [ ] idea 2
-- [ ] idea 3
-- [ ] idea 4
+- [ ] Adapt to other problems.
+- [ ] Apply it to real graphs.
+- [ ] Application to other fileds using DDs, such as constraint programming or verification of systems.
+- [ ] Test with other RL algorithms or using other function approximators.
+- [ ]...
+
+If you want to contribute to this project or if you have any questions, we would be happy to help you.
 
 ## Cite
 
