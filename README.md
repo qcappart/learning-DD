@@ -11,13 +11,13 @@ This repository is currently construction. It will be released in the next days.
 └── models/ # Implementation of the problems
 	├── maxcut-random/
 	├── ...
-        └── misp-random/
-              ├── results-local/ # Folder where the trained models and results are saved
+        └── misp-random/ 
+              ├── results-local/  # Folder where the trained models and results are saved
               ├── misp_evaluate_random.py # Testing script
               ├── misp_training_random.py # Training script
               ├── run_misp_eval_random.sh # Executable file for running the evaluation.
               ├── run_misp_training_random.sh # Executable file for running the training.
-              └── code/
+              └── code/ # Implementation
                   ├── Makefile
                   ├── learning_lib.py # Interface between python and C++ implementation
                   ├── include/ # Header files
@@ -42,8 +42,7 @@ git clone https://github.com/qcappart/learning-DD.git
 
 ### 2. Building graphnn library
 
-This library has been developped by Dai et al. [X]. 
-Please see https://github.com/Hanjun-Dai/graphnn for the instructions about how to build it.
+This library has been developped by Dai et al. Please see https://github.com/Hanjun-Dai/graphnn for the instructions about how to build it.
 
 ### 3. Building learning-DD
 
@@ -130,9 +129,6 @@ Python scripts that we used in order to perform the comparison in the paper are 
 
 This list recaps the problems that are currently handled by our method.
 
-
-
-
 -  ![Alt text](http://progressed.io/bar/100)  Maximum Independent Set Problem (MISP)
 -  ![Alt text](http://progressed.io/bar/75)  Maximum Cut Problem (Maxcut) - Must improve the performance
 -  ![Alt text](http://progressed.io/bar/50)  Knapsack - In progress
@@ -146,7 +142,7 @@ It opens new insights of research and many possibilities of future works :
 
 - [ ] Adapt to other problems.
 - [ ] Apply it to real graphs.
-- [ ] Application to other fileds using DDs, such as constraint programming or verification of systems.
+- [ ] Use it to other fields using DDs, such as constraint programming or verification of systems.
 - [ ] Test with other RL algorithms or using other function approximators.
 - [ ] ...
 
@@ -169,9 +165,10 @@ please use this reference:
 
 This work has been inspired by the following papers:
 
-- [Dai et al.] Learning combinatorial optimization algorithms over graphs. arXiv preprint arXiv:1704.01665.
-- [Dai et al.] Discriminative embeddings of latent variable models for structured data. In International Conference on Machine Learning (2016, June). 
-
+- Khalil, Elias, et al. "Learning combinatorial optimization algorithms over graphs." Advances in Neural Information Processing Systems. 2017.
+- Dai, Hanjun, Bo Dai, and Le Song. "Discriminative embeddings of latent variable models for structured data." International Conference on Machine Learning. 2016.
+- Bergman, David, et al. "Optimization bounds from binary decision diagrams." INFORMS Journal on Computing 26.2 (2013): 253-268.
+- Bergman, David, et al. Decision diagrams for optimization. Springer International Publishing, 2016.
 
 Both ideas and implementations of these references have been used and adapted for our work.
 
