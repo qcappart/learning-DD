@@ -4,6 +4,23 @@
 **/results-local
 **/build
 
+# graphnn
+
+build/
+*.model
+log.txt
+build_cpuonly/
+.vscode/
+html/
+*~
+*.swp
+make_common
+**/mnist/data/
+saved*/
+debug*
+results/
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
