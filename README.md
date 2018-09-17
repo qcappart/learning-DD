@@ -1,7 +1,11 @@
 
 # learning-DD
 
-This repository is currently construction. It will be released in the next days.
+Finding tight bounds on the optimal solution is a critical element  of  practical  solution  methods  for  discrete  optimization problems.  In the last decade, decision diagrams (DDs) have brought a new perspective on obtaining upper and lower bounds that can be significantly better than classical bounding mechanisms, such as linear relaxations. It is well known that the quality of the bound achieved through this flexible bounding method is highly reliant on the ordering of variables chosen for building the diagram.
+
+This work propose an innovative and generic approach based on deep reinforcement learning for obtaining an ordering for tightening the bounds obtained with relaxed and restricted DDs. The approach is described in (https://arxiv.org/abs/1809.03359). 
+
+For the moment, this repository contains the implementation for the [Maximum Independent Set Problem](https://en.wikipedia.org/wiki/Maximal_independent_set) and the [Maximum Cut Problem](https://en.wikipedia.org/wiki/Maximum_cut).
 
 ## Overview of the repository
 
