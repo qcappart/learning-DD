@@ -16,7 +16,7 @@ For the moment, this repository contains the implementation for the [Maximum Ind
 	├── maxcut-random/
 	├── ...
         └── misp-random/ 
-              ├── results-local/  # Folder where the trained models and results are saved
+              ├── results-local/ # Folder where the trained models and results are saved
               ├── misp_evaluate_random.py # Testing script
               ├── misp_training_random.py # Training script
               ├── run_misp_eval_random.sh # Executable file for running the evaluation.
@@ -46,11 +46,12 @@ git clone https://github.com/qcappart/learning-DD.git
 
 ### 2. Building graphnn library
 
-This library has been developped by Dai et al. Please see https://github.com/Hanjun-Dai/graphnn for the instructions about how to build it.
+This library has been developped by Dai et al. and we made no modification on it. 
+Please see https://github.com/Hanjun-Dai/graphnn for the instructions about how to build it.
 
 ### 3. Building learning-DD
 
-1. Assuming you are located at the root of the repository, go to the project library
+1. Assuming you are located at the root of the repository, go to the project library:
 
 ```shell
 cd models/misp-random/code
@@ -72,25 +73,25 @@ make
 
 1. We use conda for managing the virtual environments. If it is not yet done, install the latest version of conda (https://conda.io/docs/index.html).
 
-2. Create a python virtual environment
+2. Create a python virtual environment:
 
 ```shell
 conda create -n learning-DD-env python=3.6
 ```
 
-3. Install the required packages
+3. Install the required packages:
 
 ```shell
 conda install --name learning-DD-env numpy networkx matplotlib
 ```
 
-4. Activate the virtual environment
+4. Activate the virtual environment:
 
 ```shell
 conda activate learning-DD-env
 ```
 
-5. Once done, you can deactivate the virtual environment
+5. Once done, you can deactivate the virtual environment:
 
 ```shell
 conda deactivate 
@@ -133,16 +134,16 @@ Python scripts that we used in order to perform the comparison in the paper are 
 
 This list recaps the problems that are currently handled by our method.
 
--  ![Alt text](http://progressed.io/bar/100)  Maximum Independent Set Problem (MISP)
--  ![Alt text](http://progressed.io/bar/75)  Maximum Cut Problem (Maxcut) - Must improve the performance
--  ![Alt text](http://progressed.io/bar/50)  Knapsack - In progress
+-  ![Alt text](http://progressed.io/bar/100)  Maximum Independent Set Problem (MISP).
+-  ![Alt text](http://progressed.io/bar/75)  Maximum Cut Problem (Maxcut) - Performances can be improved.
+-  ![Alt text](http://progressed.io/bar/50)  Knapsack - In progress.
 
 Basically, adding a new problem requires only to implement the related DD construction and build the RL environment.
 
 ## Future work
 
 To the best of our knowledge, it is the first work using machine learning for the purpose of tightening optimization bounds. 
-It opens new insights of research and many possibilities of future works :
+It opens new insights of research and many possibilities of future works:
 
 - [ ] Adapt to other problems.
 - [ ] Apply it to real graphs.
@@ -154,7 +155,7 @@ If you want to contribute to this project or if you have any questions, we would
 
 ## Cite
 
-please use this reference:
+Please use this reference:
 
 ```latex
 @article{cappart2018improving,
@@ -165,7 +166,7 @@ please use this reference:
 }
 ```
 
-## Reference and inspirations
+## References and inspirations
 
 This work has been inspired by the following papers:
 
@@ -178,4 +179,4 @@ Both ideas and implementations of these references have been used and adapted fo
 
 ## Licence
 
-This work is under MIT licence (https://choosealicense.com/licenses/mit/). It is a short and simple permissive license with conditions only requiring preservation of copyright and license notices. Licensed works, modifications, and larger works may be distributed under different terms and without source code. 
+This work is under MIT licence (https://choosealicense.com/licenses/mit/). It is a short and simple very permissive license with conditions only requiring preservation of copyright and license notices. Licensed works, modifications, and larger works may be distributed under different terms and without source code. 
