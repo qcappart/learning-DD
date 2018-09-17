@@ -133,11 +133,9 @@ This list recaps the problems that are currently handled by our method.
 
 
 
-![Alt text](http://progressed.io/bar/100) Maximum Independent Set Problem (MISP)
-
-![Alt text](http://progressed.io/bar/75) Maximum Cut Problem (Maxcut) - Must improve the performance
-
-![Alt text](http://progressed.io/bar/50) Knapsack - In progress
+-  ![Alt text](http://progressed.io/bar/100)  Maximum Independent Set Problem (MISP)
+-  ![Alt text](http://progressed.io/bar/75)  Maximum Cut Problem (Maxcut) - Must improve the performance
+-  ![Alt text](http://progressed.io/bar/50)  Knapsack - In progress
 
 Basically, adding a new problem requires only to implement the related DD construction and build the RL environment.
 
@@ -150,12 +148,33 @@ It opens new insights of research and many possibilities of future works :
 - [ ] Apply it to real graphs.
 - [ ] Application to other fileds using DDs, such as constraint programming or verification of systems.
 - [ ] Test with other RL algorithms or using other function approximators.
-- [ ]...
+- [ ] ...
 
 If you want to contribute to this project or if you have any questions, we would be happy to help you.
 
 ## Cite
 
-## Reference
+please use this reference:
+
+```latex
+@article{cappart2018improving,
+  title={Improving Optimization Bounds using Machine Learning: Decision Diagrams meet Deep Reinforcement Learning},
+  author={Cappart, Quentin and Goutierre, Emmanuel and Bergman, David and Rousseau, Louis-Martin},
+  journal={arXiv preprint arXiv:1809.03359},
+  year={2018}
+}
+```
+
+## Reference and inspirations
+
+This work has been inspired by the following papers:
+
+- [Dai et al.] Learning combinatorial optimization algorithms over graphs. arXiv preprint arXiv:1704.01665.
+- [Dai et al.] Discriminative embeddings of latent variable models for structured data. In International Conference on Machine Learning (2016, June). 
+
+
+Both ideas and implementations of these references have been used and adapted for our work.
 
 ## Licence
+
+This work is under MIT licence (https://choosealicense.com/licenses/mit/). It is a short and simple permissive license with conditions only requiring preservation of copyright and license notices. Licensed works, modifications, and larger works may be distributed under different terms and without source code. 
