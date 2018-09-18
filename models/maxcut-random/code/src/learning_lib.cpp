@@ -19,13 +19,13 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-*/
+ */
 
 #include "config.h"
 #include "learning_lib.h"
 #include "graph.h"
 #include "nn_api.h"
-#include "misp_qnet.h"
+#include "maxcut_qnet.h"
 #include "nstep_replay_mem.h"
 #include "simulator.h"
 #include "learning_env.h"
@@ -88,8 +88,8 @@ int Init(const int argc, const char** argv) {
     bdd_max_width = cfg::bdd_max_width;
     r_scaling = cfg::r_scaling;
 
-    if (!strcmp(cfg::net_type, "MISPQNet"))
-        net = new MISPQNet();
+    if (!strcmp(cfg::net_type, "MaxcutQNet"))
+        net = new MaxcutQNet();
     else {
         std::cerr << "unknown net type: " <<  cfg::net_type << std::endl;
         exit(0);

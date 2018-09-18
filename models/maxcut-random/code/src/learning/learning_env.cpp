@@ -21,25 +21,20 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
  */
 
+
 #include "config.h"
 #include "learning_env.h"
 #include "graph.h"
+#include "maxcut_bdd.hpp"
 #include <cassert>
 #include <random>
 #include <cstdlib>
-
-#include "indepset_solver.hpp"
-#include "orderings.hpp"
-#include "merge.hpp"
-#include "intset.hpp"
-#include "instance.hpp"
-#include "stats.hpp"
-
 
 int bdd_max_width = 10000; // -1 if exact
 char reward_type = 'W';
 char bdd_type = 'U';
 double r_scaling = 1;
+double w_scaling = 0.01;
 
 LearningEnv::LearningEnv() : IEnv() {
 
@@ -53,19 +48,16 @@ void LearningEnv::s0(std::shared_ptr<Graph> _g, bool isTrain) {
     act_seq.clear();
     reward_seq.clear();
     sum_rewards.clear();
-    width = 0;
+
+
+    solver = new MaxCutBDD(0, bdd_max_width, graph->adj_list,0,w_scaling);
+    inst = solver->get_instance();
+    State initial_state(inst->n_vertices, 0);
+    solver->initialize(initial_state, 0, true);
+
+    l = 0;
     bound = 0;
-
-    inst = new IndepSetInst;
-    inst->build_complete_instance(graph->adj_list);
-
-    solver = new IndepSetSolver(inst, bdd_max_width);
-    solver->ordering = new OnlineOrdering(inst);
-    solver->merger =  new MinLongestPath(inst, bdd_max_width);
-
-    IntSet starting_state;
-    starting_state.resize(0, inst->graph->n_vertices-1, true);
-    solver->initialize(starting_state, 0);
+    width = 0;
 
 }
 
@@ -73,7 +65,6 @@ double LearningEnv::step(int a) {
 
     assert(graph);
     assert(covered_set.count(a) == 0);
-
     state_seq.push_back(action_list);
     act_seq.push_back(a);
 
@@ -84,28 +75,29 @@ double LearningEnv::step(int a) {
     double old_bound = bound;
     double r_t = 0;
 
-    if(bdd_type == 'L')
-        solver->generate_next_step_restriction(a);
-    else if(bdd_type == 'U')
-        solver->generate_next_step_relaxation(a);
+    if(bdd_type == 'U')
+        bound = solver->generate_next_step_relaxation(a,l);
+
+    else if(bdd_type == 'L')
+        bound = solver->generate_next_step_restriction(a,l);
+
     else {
         std::cerr << "unknown bdd_type type"  <<  bdd_type << std::endl;
         exit(0);
     }
 
-    width = solver->final_width;
-    bound = solver->get_bound();
+    width = solver->width;
+
+    l++;
 
     if (reward_type == 'W')
         r_t = getReward(old_width);
     else if (reward_type == 'B' && bdd_type == 'U')
-        r_t = getRewardUpperBound(old_bound);
+        r_t = getRewardBound(old_bound);
     else if (reward_type == 'B' && bdd_type == 'L')
         r_t = getRewardLowerBound(old_bound);
-    else if (reward_type == 'M')
-        r_t = getRewardMerge();
     else {
-        std::cerr << "Unknown reward type"  <<  cfg::reward_type << std::endl;
+        std::cerr << "unknown reward type"  <<  cfg::reward_type << std::endl;
         exit(0);
     }
 
@@ -115,8 +107,7 @@ double LearningEnv::step(int a) {
     return r_t;
 }
 
-int LearningEnv::randomAction()
-{
+int LearningEnv::randomAction() {
     assert(graph);
     avail_list.clear();
 
@@ -127,6 +118,7 @@ int LearningEnv::randomAction()
     }
 
     assert(avail_list.size());
+
     int idx = rand() % avail_list.size();
 
     return avail_list[idx];
@@ -135,21 +127,18 @@ int LearningEnv::randomAction()
 bool LearningEnv::isTerminal() {
 
     assert(graph);
-    return (int) action_list.size() == graph->num_nodes;
+    return ((int) action_list.size() == graph->num_nodes);
 }
+
 
 double LearningEnv::getReward(int old_width) {
-    return -r_scaling * (width - old_width); // increase in width is penalized, decrease are rewarded
+    return  - r_scaling * (width - old_width); // increase in width is penalized, decrease are rewarded
 }
 
-double LearningEnv::getRewardUpperBound(int old_bound) {
-    return -r_scaling * (bound - old_bound); // increase in width is penalized, decrease are rewarded
+double LearningEnv::getRewardBound(int old_bound) {
+    return - r_scaling * (bound - old_bound); // increase in width is penalized, decrease are rewarded
 }
 
 double LearningEnv::getRewardLowerBound(int old_bound) {
     return r_scaling * (bound - old_bound); // increase in width is penalized, decrease are rewarded
-}
-
-double LearningEnv::getRewardMerge() {
-    return -r_scaling * solver->merger->gap;
 }
