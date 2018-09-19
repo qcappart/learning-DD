@@ -66,6 +66,7 @@ CXXFLAGS += -DGPU_MODE
 3. Build the dynamic library:
 
 ```shell
+cp Makefile_example Makefile
 make
 ```
 
