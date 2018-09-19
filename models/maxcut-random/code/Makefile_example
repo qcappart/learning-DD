@@ -1,5 +1,3 @@
-
-
 GNN_HOME=../../../graphnn
 
 include $(GNN_HOME)/make_common

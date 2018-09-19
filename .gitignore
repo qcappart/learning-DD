@@ -3,7 +3,7 @@
 
 **/results-local
 **/build
-
+**/Makefile
 # graphnn
 
 build/
