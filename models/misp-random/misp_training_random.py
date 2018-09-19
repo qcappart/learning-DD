@@ -27,6 +27,8 @@ import ctypes
 import os
 import sys
 import time
+import matplotlib as mpl
+mpl.use('Agg')
 import matplotlib.pyplot as plt
 
 sys.path.append( '%s/code' % os.path.dirname(os.path.realpath(__file__)) )
