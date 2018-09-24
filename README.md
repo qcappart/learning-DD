@@ -83,7 +83,7 @@ conda create -n learning-DD-env python=3.6
 3. Install the required packages:
 
 ```shell
-conda install --name learning-DD-env numpy networkx matplotlib
+conda install --name learning-DD-env numpy networkx matplotlib pandas
 ```
 
 4. Activate the virtual environment:
