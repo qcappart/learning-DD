@@ -7,6 +7,8 @@ This work propose an innovative and generic approach based on deep reinforcement
 
 For the moment, this repository contains the implementation for the [Maximum Independent Set Problem](https://en.wikipedia.org/wiki/Maximal_independent_set) and the [Maximum Cut Problem](https://en.wikipedia.org/wiki/Maximum_cut).
 
+Please be aware that this project is still at research level. 
+
 ## Overview of the repository
 
 ```bash
