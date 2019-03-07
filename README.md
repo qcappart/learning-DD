@@ -138,7 +138,7 @@ Python scripts that we used in order to perform the comparison in the paper are 
 This list recaps the problems that are currently handled by our method.
 
 -  ![Alt text](http://progressed.io/bar/100)  Maximum Independent Set Problem (MISP).
--  ![Alt text](http://progressed.io/bar/75)  Maximum Cut Problem (Maxcut) - Performances can be improved.
+-  ![Alt text](http://progressed.io/bar/100)  Maximum Cut Problem (Maxcut) - Performances can be improved.
 -  ![Alt text](http://progressed.io/bar/50)  Knapsack - In progress.
 
 Basically, adding a new problem requires only to implement the related DD construction and build the RL environment.
