@@ -163,11 +163,13 @@ If you want to contribute to this project or if you have any questions, we would
 Please use this reference:
 
 ```latex
-@article{cappart2018improving,
-  title={Improving Optimization Bounds using Machine Learning: Decision Diagrams meet Deep Reinforcement Learning},
+@inproceedings{cappart2019improving,
+  title={Improving optimization bounds using machine learning: Decision diagrams meet deep reinforcement learning},
   author={Cappart, Quentin and Goutierre, Emmanuel and Bergman, David and Rousseau, Louis-Martin},
-  journal={arXiv preprint arXiv:1809.03359},
-  year={2018}
+  booktitle={Proceedings of the AAAI Conference on Artificial Intelligence},
+  volume={33},
+  pages={1443--1451},
+  year={2019}
 }
 ```
 
